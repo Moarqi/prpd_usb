@@ -1,9 +1,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="prpd_usb",
-    use_scm_version=True,
-    setup_requires=['setuptools_scm'],
+    name="prpd_usb",    
+    setup_requires=['setuptools'],
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

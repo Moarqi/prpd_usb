@@ -39,7 +39,7 @@ DATA = dict([
     )
 ])
 
-def main(args):
+def main(args):    
     with serial.Serial(args.serial_device, 115200) as ser:
         logger.info("opened serial port %s", args.serial_device)
         read_buffer = bytes([0]*9)

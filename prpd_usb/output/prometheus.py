@@ -16,7 +16,7 @@ class Metrics:
     def metrics(self):
         result = []
         for command, field, time, value in self._reader.read():
-            milliseconds_since_epoch = int(time * 1000)
+            timestamp = int(time * 1000)
             labels = {
                 "unit": field.unit,
                 "source": "prpd_usb",
@@ -38,7 +38,7 @@ class Metrics:
             result.append(
                 f'#TYPE {prom_id} gauge\n'
                 f'{prom_id}{{{format_labels(labels)}}} '
-                f'{value} {milliseconds_since_epoch}\n',
+                f'{value} {timestamp}\n',
             )
         cherrypy.response.headers['Content-Type'] = 'text/plain; version=0.0.4'
         return "".join(result)

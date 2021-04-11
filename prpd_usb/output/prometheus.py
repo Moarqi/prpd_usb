@@ -30,7 +30,7 @@ class Metrics:
 
             solar_string = re.match(r".*(string_\d)$", field.name)
             if solar_string:
-                labels["string"] = phase.groups()[0]
+                labels["string"] = solar_string.groups()[0]
                 field_name = field.name.rsplit("_", 2)[0]
 
             prom_id = f"prpd_usb_{command.name}_{field_name}"

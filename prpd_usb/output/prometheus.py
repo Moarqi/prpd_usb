@@ -22,10 +22,17 @@ class Metrics:
                 "source": "prpd_usb",
             }
             field_name = field.name
-            phase = re.match(r".*(phase_\d)$", field.name)
+
+            phase = re.match(r".*(phase_\d)$", field.name)            
             if phase:
                 labels["phase"] = phase.groups()[0]
                 field_name = field.name.rsplit("_", 2)[0]
+
+            solar_string = re.match(r".*(string_\d)$", field.name)
+            if solar_string:
+                labels["string"] = phase.groups()[0]
+                field_name = field.name.rsplit("_", 2)[0]
+
             prom_id = f"prpd_usb_{command.name}_{field_name}"
 
             result.append(
